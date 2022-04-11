@@ -1,0 +1,12 @@
+﻿<h1>My Profile</h1>
+<p>
+    <strong>Name: </strong>  {{account.username}}<br />
+    <strong>Email: </strong> {{account.email}}<br />
+    <strong>Identity provider: </strong> {{account.idp}}<br />
+    <strong>Social id: </strong> {{account.social_id}}
+</p>
+<!--<p><a routerLink="update">Edit username and reset password</a></p>-->
+<button type="button" (click)="updateProfile()" [disabled]="isSocialAccount" class="btn btn-primary">
+  Edit username and password
+</button>
+<p *ngIf="isSocialAccount" style="color: red;">Edit function is not available for social account</p>

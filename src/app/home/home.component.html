@@ -1,0 +1,67 @@
+﻿<div class="p-4">
+    <div class="container">
+      <h3 class="card-header">User Statistics</h3>
+      <div class="card-body">
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th style="width:30%;text-align: center;vertical-align: middle;">Signed up users</th>
+            <th style="width:35%;text-align: center;vertical-align: middle;">Active user sessions <BR>{{ endDate | date:'yyyy-MM-dd' }}</th>
+            <th style="width:35%;text-align: center;vertical-align: middle;">Average active user sessions <BR>{{ startDate | date:'yyyy-MM-dd' }} ~ {{ endDate | date:'yyyy-MM-dd' }}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngIf="acctStat">
+            <td style="text-align: center;vertical-align: middle;">{{acctStat.acct_count}}</td>
+            <td style="text-align: center;vertical-align: middle;">{{acctStat.session_accts_today}}</td>
+            <td style="text-align: center;vertical-align: middle;">{{acctStat.avg_session_accts_7_days}}</td>
+          </tr>
+          <tr *ngIf="!accounts">
+            <td colspan="3" class="text-center">
+              <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+      <h3 class="card-header">All Accounts</h3>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th style="width:20%">Name</th>
+            <th style="width:25%">Email</th>
+            <th style="width:15%">Login count</th>
+            <th style="width:20%">Sign up time</th>
+            <th style="width:20%">Last session time</th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let account of accounts">
+            <td>{{account.username}}</td>
+            <td>{{account.email}}</td>
+            <td>{{account.login_count}}</td>
+            <td>{{account.sign_up_time}}</td>
+            <td>{{account.last_session_time}}</td>
+<!--            <td style="white-space: nowrap">-->
+              <!--      <a routerLink="edit/{{account.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>-->
+              <!--      <button (click)="deleteAccount(account.id)" class="btn btn-sm btn-danger btn-delete-account" [disabled]="account.isDeleting">-->
+              <!--        <span *ngIf="account.isDeleting" class="spinner-border spinner-border-sm"></span>-->
+              <!--        <span *ngIf="!account.isDeleting">Delete</span>-->
+              <!--      </button>-->
+<!--            </td>-->
+          </tr>
+          <tr *ngIf="!accounts">
+            <td colspan="5" class="text-center">
+              <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
