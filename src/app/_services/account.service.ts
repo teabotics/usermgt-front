@@ -66,7 +66,7 @@ export class AccountService {
 
 
     logout( idp:string = 'NOT_ASSIGN' ) {
-        this.cookieService.deleteAll( '/', 'usermgt-front.herokuapp.com',false, 'Lax');
+        this.cookieService.deleteAll( '/', 'usermgt-front.herokuapp.com',true, 'None');
 
         if (idp === 'NOT_ASSIGN'){
           idp = this.accountValue.idp
