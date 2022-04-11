@@ -210,7 +210,7 @@ export class AccountService {
           // update the current account if it was updated
           if (account.id === this.accountValue.id) {
             // publish updated account to subscribers
-            account = { ...account, ...this.accountValue };
+            // account = { ...account, ...this.accountValue };
             this.accountSubject.next(account);
           }
           return account;
