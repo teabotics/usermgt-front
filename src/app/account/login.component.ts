@@ -174,7 +174,7 @@ export class LoginComponent implements OnInit {
 
     loginAuth0ImplicitFlow(conn: string){
       let url = 'https://dev-e8k8umnn.us.auth0.com/authorize?response_type=token&client_id=42J1I9xJCMnanunfDLD4ctEIpqQ9dbza&connection='
-      + conn + '&redirect_uri=http://usermgt-front.herokuapp.com/account/login&scope=openid%20profile%20email';
+      + conn + '&redirect_uri=https://usermgt-front.herokuapp.com/account/login&scope=openid%20profile%20email';
 
       window.open(url,"_self");
     }
