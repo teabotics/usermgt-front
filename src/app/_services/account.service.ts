@@ -35,6 +35,7 @@ export class AccountService {
     login(formData: FormData) {
         return this.http.post<any>(`${baseUrl}/token`, formData, { withCredentials: true })
             .pipe(map(account => {
+                this.setJWTTokenToCookie(account.access_token, account.email, account.username, 'LOCAL');
                 this.accountSubject.next(account);
                 return account;
             }));

@@ -148,8 +148,8 @@ export class LoginComponent implements OnInit {
 
         this.loading = true;
         var formData: any = new FormData();
-        formData.append("username", this.f.email.value);
-        formData.append("password", this.f.password.value);
+        formData.append('username', this.f.email.value);
+        formData.append('password', this.f.password.value);
 
         this.accountService.login(formData)
             .pipe(first())
@@ -163,7 +163,7 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                     if (error.includes('Forbidden')){
-                      //表示是還沒activate，就導向另外一個resend activate email 的畫面
+                      // 表示是還沒activate，就導向另外一個resend activate email 的畫面
                       this.userNotActivated = true;
                     } else {
                       this.userNotActivated = false;
