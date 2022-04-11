@@ -211,6 +211,7 @@ export class AccountService {
           if (account.id === this.accountValue.id) {
             // publish updated account to subscribers
             // account = { ...account, ...this.accountValue };
+            console.log('account.username = ' + account.username);
             this.accountSubject.next(account);
           }
           return account;
