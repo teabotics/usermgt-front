@@ -242,9 +242,9 @@ export class AccountService {
       // write cookie
       // console.log('About to set cookie....................');
       // console.log('idp='+idp);
-      this.cookieService.deleteAll( '/', 'usermgt-front.herokuapp.com',false, 'Lax');
-      this.cookieService.set( 'access_token', token, { expires: 30, path: '/', sameSite: 'Lax' });
-      this.cookieService.set( 'idp', idp, { expires: 30, path: '/', sameSite: 'Lax' });
+      this.cookieService.deleteAll( path = '/',secure = true, sameSite = 'None');
+      this.cookieService.set( 'access_token', token, { expires: 30, path: '/', secure: true, sameSite: 'Lax' });
+      this.cookieService.set( 'idp', idp, { expires: 30, path: '/', secure: true,  sameSite: 'None' });
 
 
       if (email === this.accountValue.email) {
