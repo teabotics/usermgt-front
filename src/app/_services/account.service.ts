@@ -205,12 +205,12 @@ export class AccountService {
           'Authorization': 'Bearer '+ token
         })
       };
-      return this.http.put(`${baseUrl}/update`, accountToUpdate, httpOptions)
-        .pipe(map((account: any) => {
+      return this.http.put<Account>(`${baseUrl}/update`, accountToUpdate, httpOptions)
+        .pipe(map((account: Account) => {
           // update the current account if it was updated
           if (account.id === this.accountValue.id) {
             // publish updated account to subscribers
-            account = { ...this.accountValue, ...account };
+            account = { ...account, ...this.accountValue };
             this.accountSubject.next(account);
           }
           return account;
