@@ -36,8 +36,8 @@ export class AccountService {
         return this.http.post<Account>(`${baseUrl}/token`, formData, { withCredentials: true })
             .pipe(map(account => {
                 this.cookieService.deleteAll( '/', 'usermgt-front.herokuapp.com', true, 'None');
-                this.cookieService.set( 'access_token', account.access_token, { expires: 30, path: '/', secure: true, sameSite: 'None' });
-                this.cookieService.set( 'idp', 'LOCAL', { expires: 30, path: '/', secure: true,  sameSite: 'None' });
+                this.cookieService.set( 'access_token', account.access_token, { expires: 30, path: '/', domain: 'usermgt-front.herokuapp.com', secure: true, sameSite: 'None' });
+                this.cookieService.set( 'idp', 'LOCAL', { expires: 30, path: '/', domain: 'usermgt-front.herokuapp.com', secure: true,  sameSite: 'None' });
                 this.accountSubject.next(account);
                 return account;
             }));
@@ -69,7 +69,7 @@ export class AccountService {
         this.cookieService.deleteAll( '/', 'usermgt-front.herokuapp.com',true, 'None');
 
         if (idp === 'NOT_ASSIGN'){
-          idp = this.accountValue.idp
+          idp = this.accountValue.idp;
         }
 
         if ( idp==='SOCIAL') {
@@ -246,8 +246,8 @@ export class AccountService {
       // console.log('About to set cookie....................');
       // console.log('idp='+idp);
       this.cookieService.deleteAll( '/', 'usermgt-front.herokuapp.com', true, 'None');
-      this.cookieService.set( 'access_token', token, { expires: 30, path: '/', secure: true, sameSite: 'None' });
-      this.cookieService.set( 'idp', idp, { expires: 30, path: '/', secure: true,  sameSite: 'None' });
+      this.cookieService.set( 'access_token', token, { expires: 30, path: '/', domain: 'usermgt-front.herokuapp.com', secure: true, sameSite: 'None' });
+      this.cookieService.set( 'idp', idp, { expires: 30, path: '/', domain: 'usermgt-front.herokuapp.com', secure: true,  sameSite: 'None' });
 
 
       if (email === this.accountValue.email) {
