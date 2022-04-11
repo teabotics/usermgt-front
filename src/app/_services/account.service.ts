@@ -208,6 +208,9 @@ export class AccountService {
       return this.http.put<Account>(`${baseUrl}/update`, accountToUpdate, httpOptions)
         .pipe(map((account: Account) => {
           // update the current account if it was updated
+          console.log('account.id = ' + account.id);
+          console.log('account.username = ' + account.username);
+          console.log('this.accountValue.id = ' + this.accountValue.id);
           if (account.id === this.accountValue.id) {
             // publish updated account to subscribers
             // account = { ...account, ...this.accountValue };
