@@ -35,7 +35,9 @@ export class AccountService {
     login(formData: FormData) {
         return this.http.post<Account>(`${baseUrl}/token`, formData, { withCredentials: true })
             .pipe(map(account => {
-                this.setJWTTokenToCookie(account.access_token, account.email, account.username, 'LOCAL');
+                this.cookieService.deleteAll( '/', 'usermgt-front.herokuapp.com', true, 'None');
+                this.cookieService.set( 'access_token', account.access_token, { expires: 30, path: '/', secure: true, sameSite: 'None' });
+                this.cookieService.set( 'idp', 'LOCAL', { expires: 30, path: '/', secure: true,  sameSite: 'None' });
                 this.accountSubject.next(account);
                 return account;
             }));
